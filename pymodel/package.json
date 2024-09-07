@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@huggingface/inference": "^2.8.0",
+    "node-fetch": "^3.3.2",
+    "path": "^0.12.7",
+    "pdfjs-dist": "^4.6.82"
+  }
+}

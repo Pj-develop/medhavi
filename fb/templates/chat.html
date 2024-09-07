@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Community Chat</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+  </head>
+  <body>
+    <div class="message-box">
+      <h2>Community Chat Room</h2>
+      <div class="messages" id="messages"></div>
+      <div class="inputs">
+        <input type="text" placeholder="Message" id="message" />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+    <button id="home-button" onclick="goHome()">Home</button>
+
+    <script type="text/javascript">
+      const socket = io();
+
+      const messagesDiv = document.getElementById("messages");
+
+      socket.on("message", (data) => {
+          const messageElement = document.createElement("div");
+          messageElement.innerHTML = `<strong>${data.name}</strong>: ${data.message}`;
+          messagesDiv.appendChild(messageElement);
+      });
+
+      function sendMessage() {
+          const message = document.getElementById("message").value;
+          if (message) {
+              socket.emit("message", { data: message });
+              document.getElementById("message").value = "";
+          }
+      }
+
+      function goHome() {
+          window.location.href = " http://127.0.0.1:3000/dashboard";
+      }
+
+      {% for msg in messages %}
+      socket.emit("message", { name: "{{ msg.name }}", message: "{{ msg.message }}" });
+      {% endfor %}
+    </script>
+  </body>
+</html>

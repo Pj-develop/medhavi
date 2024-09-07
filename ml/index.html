@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRI Image Analyzer</title>
+</head>
+<body>
+    <h1>MRI Image Analyzer</h1>
+    <form id="uploadForm">
+        <label for="image">Upload MRI Image:</label>
+        <input type="file" id="image" name="image" accept="image/*">
+        <button type="submit">Analyze</button>
+    </form>
+
+    <div id="result">
+        <!-- The result will be shown here -->
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const imageInput = document.getElementById('image');
+            if (imageInput.files.length === 0) {
+                alert('Please select an image file.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('image', imageInput.files[0]);
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const result = await response.json();
+
+                // Display the result
+                document.getElementById('result').innerHTML = `
+                    <h2>Prediction Result</h2>
+                    <p><strong>Predicted Class:</strong> ${result.predicted_class}</p>
+                    <p><strong>Description:</strong> ${result.description}</p>
+                `;
+
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
