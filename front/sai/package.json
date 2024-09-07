@@ -1,0 +1,62 @@
+{
+  "name": "sai",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.645.0",
+    "@azure-rest/ai-document-intelligence": "^1.0.0-beta.2",
+    "@azure/ai-form-recognizer": "^5.0.0",
+    "@azure/core-auth": "^1.7.2",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@fontsource/roboto": "^5.0.14",
+    "@huggingface/inference": "^2.8.0",
+    "@mui/icons-material": "^6.0.2",
+    "@mui/material": "^6.0.2",
+    "@mui/styles": "^6.0.2",
+    "@supabase/auth-ui-react": "^0.4.7",
+    "@supabase/auth-ui-shared": "^0.1.8",
+    "@supabase/supabase-js": "^2.45.3",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "aws-sdk": "^2.1690.0",
+    "axios": "^1.7.7",
+    "base64-js": "^1.5.1",
+    "file-saver": "^2.0.5",
+    "pdfjs-dist": "^4.6.82",
+    "react": "^18.3.1",
+    "react-chatbot-kit": "^2.2.2",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.1",
+    "react-scripts": "5.0.1",
+    "speech-to-element": "^1.0.1",
+    "tesseract.js": "^5.1.1",
+    "use-sound": "^4.0.3",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
